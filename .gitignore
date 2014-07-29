@@ -1,0 +1,4 @@
+errors/
+sessions/
+*.bak
+progress.log

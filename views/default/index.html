@@ -1,0 +1,15 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+{{=objs_rows}}
+
+
+<div >
+    {{for obj_item,key_results in objs_results_map.iteritems():}}
+        {{=H1(obj_item)}}
+            {{for result_item in key_results:}}
+            {{=DIV(result_item.result_content,_style="padding: 0 0 0 20px;")}}
+            {{=LOAD('default','post_artifact.load',ajax=True,args=[result_item.id])}}
+            {{pass}}      
+    {{pass}}
+</div>

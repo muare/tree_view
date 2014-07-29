@@ -1,0 +1,9 @@
+<div class="artifact">
+{{for artifact_item in artifact_rows:}}    
+    <blockquote class="artifact_body">
+        {{=artifact_item.artifact}}
+    </blockquote>
+{{pass}}
+</div>
+
+{{=form}}
