@@ -25,11 +25,13 @@ def post_artifact():
     if len(request.args): key_result_id=int(request.args[0])
     else:
         return dict()
-    
-    artifact_rows=db(db.key_result_artifact.key_result_id==key_result_id).select()
     form=SQLFORM(db.key_result_artifact,fields=['artifact'],labels={'artifact':'Add New artifact'})
     form.vars.key_result_id=key_result_id
-    
+    if form.process().accepted:
+        response.flash='artifact accepted'
+    elif form.errors:
+        response.flash='errors'
+    artifact_rows=db(db.key_result_artifact.key_result_id==key_result_id).select()
     return dict(artifact_rows=artifact_rows,form=form)
         
 
